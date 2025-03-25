@@ -1,143 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FutWear</title>
-    <link rel="stylesheet" href="../Css/index.css" />
-    <link rel="icon" type="image/png" href="../Images/icons/logo.png">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" /> -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Muebles</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
-
 <body>
-    <div include-html="./header.html"></div>
 
-    <main>
-        <div class="mensajeBienvenida">Bienvenido <span></span></div>
-        <div class="video-container" data-auto-id="video-player">
-            <video id="videoElement" loop="" muted="" playsinline="" autoplay="" fetchpriority="high">
-                <source src="../Video/arsenal.mp4" type="video/mp4">
-            </video>
-            <div class="overlay">
-                <div class="banner">
-                    <h1>PRIMERA EQUIPACIÓN<br>ARSENAL 24/25</h1>
-                    <a href="./camiseta.html?equipo=Arsenal&equipacion=Primera%20Equipación"><button
-                            id="buy-button-arsenal">COMPRAR ⭢</button></a>
-                </div>
-            </div>
+    <!-- Encabezado -->
+    <header class="bg-dark text-white text-center p-3">
+        <h1>Tienda de Muebles</h1>
+    </header>
+
+    <!-- Sección de productos -->
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Nuestros Productos</h2>
+        <div class="row" id="productos-container">
+            <!-- Los productos se cargarán aquí dinámicamente -->
         </div>
-       
-     
-          
-            <h2 id="h2_slider"><a href="./catalogo.html">CAMISETAS</a> </h2>
-            <div class="slider-cards">
-                <div class="catalogo" id="catalogo-cards">
-        
-                </div>
-            </div>
-       
-        </div>
-        <div class="teams-container">
-            <h2>Camisetas de equipos de fútbol</h2>
-            <p>Las camisetas y equipaciones de los mejores equipos de fútbol del mundo. Descubre todos los productos
-                oficiales para vestir como los jugadores.</p>
-            <div class="teams-grid">
-                <div class="team-card">
-                    <img src="../Images/imgs/dybala.jpg" alt="Real Madrid">
-                    <div class="team-overlay">
-                       <a href="./equipaciones.html?equipo=Roma"> <span>ROMA</span></a>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <img src="../Images/imgs/son.jpg" alt="FC Barcelona">
-                    <div class="team-overlay">
-                        <a href="./equipaciones.html?equipo=Tottenham">  <span>TOTTENHAM</span></a>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <img src="../Images/imgs/mbappe.webp" alt="Atlético de Madrid">
-                    <div class="team-overlay">
-                        <a href="./equipaciones.html?equipo=Psg">   <span>PSG</span></a>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <a href="./equipos.html">
-                        <img src="../Images/imgs/musiala.jpg" alt="Más Equipos">
-                        <div class="team-overlay">
-                            <span>MÁS EQUIPOS</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        </div>
-        <div class="container-main">
+    </div>
 
-            <section id="infoFutWear">
-                <h1>FutWear – Camisetas de Fútbol </h1>
-                <p id="shortText">
-                    Bienvenido a FutWear, tu destino definitivo para camisetas de fútbol.
-                    Desde las canchas históricas hasta las modernas arenas, nuestras camisetas son testimonios de los
-                    triunfos y desafíos del fútbol mundial. <a href="javascript:void(0)" onclick="showMore()">Más
-                        información</a>
-                </p>
-                <div id="moreText" style="display: none;">
-                    <p>
-                        Desde su fundación en 2024, FutWear se ha esforzado por ofrecer a los aficionados al fútbol una
-                        experiencia única al proporcionar una vasta selección de camisetas, cada una con una historia
-                        significativa. Nuestro compromiso es brindar a los fanáticos no solo una prenda, sino un pedazo
-                        de la historia del fútbol.
-                    </p>
-                    <p>
-                        En FutWear, entendemos que cada camiseta de fútbol representa más que colores y logos; simboliza
-                        momentos de pasión, unidad y competencia que conectan a las personas independientemente de sus
-                        diferencias. Por esta razón, trabajamos codo a codo con proveedores confiables y sostenibles
-                        para garantizar que cada producto ofrecido no solo sea de la más alta calidad, sino también
-                        producido de manera ética.
-                    </p>
-                    <p>
-                        Nuestra colección abarca desde camisetas vintage que datan de las primeras copas del mundo hasta
-                        las modernas ediciones limitadas usadas en los torneos actuales. Cada artículo es seleccionado
-                        meticulosamente, garantizando autenticidad y calidad, reflejando nuestra devoción por el deporte
-                        y su rica historia.
-                    </p>
-                    <p>
-                        FutWear también está dedicado a la educación y la sostenibilidad en el deporte. Participamos
-                        activamente en programas que promueven el reciclaje de equipos deportivos y apoyamos iniciativas
-                        que buscan reducir el impacto ambiental de la industria del deporte. Creemos que es nuestra
-                        responsabilidad ayudar a preservar el planeta para las futuras generaciones de aficionados y
-                        atletas.
-                    </p>
-                    <p>
-                        Además, ofrecemos un espacio en nuestro sitio web donde los fans pueden aprender sobre la
-                        historia detrás de las camisetas, los equipos y los jugadores que las han hecho famosas. A
-                        través de nuestro blog y nuestras redes sociales, compartimos historias inspiradoras de cómo el
-                        fútbol puede influir positivamente en las comunidades y fomentar un cambio social.
-                    </p>
-                    <p>
-                        Únete a nosotros en esta emocionante travesía y descubre por qué en FutWear, creemos que cada
-                        camiseta tiene una historia que merece ser contada. Ya seas un coleccionista ávido o un nuevo
-                        aficionado al fútbol, en FutWear encontrarás camisetas que resonarán con tus emociones más
-                        profundas y te conectarán con los momentos más gloriosos del fútbol.
-                    </p>
-                    <a href="javascript:void(0)" onclick="showLess()">Mostrar menos</a>
-                </div>
-            </section>
-
-
-
-        </div>
-    </main>
-<!-- aaa -->
-    <div include-html="./footer.html"></div>
-    <script src="../Javascript/include.js"></script>
-    <script src="../Javascript/index.js"></script>
-
-
+    <!-- Script de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script para cargar los productos dinámicamente -->
+    <script src="../assets/js/cargarProductos.js"></script>
 
 </body>
-
 </html>
