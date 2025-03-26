@@ -1,0 +1,50 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-image: url("../img/login.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 1rem;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.login-box {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+  z-index: 1;
+  position: relative;
+}
+
+/* Imagen de fondo y tamaño en pantallas pequeñas */
+@media (max-width: 576px) {
+  body {
+    background-image: url("../img/login_movil.png");
+    background-attachment: scroll;
+    padding: 1rem;
+  }
+
+  .login-box {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+}

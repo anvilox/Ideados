@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch("../backend/getProductos.php")
         .then(response => response.json())
         .then(data => {
-            console.log("Respuesta del servidor:", data);
             const container = document.getElementById("productos-container");
             container.innerHTML = "";
             data.forEach(producto => {
