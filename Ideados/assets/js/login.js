@@ -17,7 +17,11 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          window.location.href = "index.html";
+          if (data.admin) {
+            window.location.href = "admin.php";
+          } else {
+            window.location.href = "index.html";
+          }
         } else {
           alert("Correo o contraseña incorrectos");
         }

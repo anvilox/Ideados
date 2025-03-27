@@ -18,14 +18,16 @@ try {
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($usuario && $usuario['Contraseña'] === $password) {
-        // Guardar datos en la sesión
         $_SESSION['usuario'] = [
             'id' => $usuario['Id'],
             'nombre' => $usuario['Nombre'],
             'correo' => $usuario['Correo'],
             'admin' => $usuario['Admin']
         ];
-        echo json_encode(["success" => true]);
+        echo json_encode([
+            "success" => true,
+            "admin" => $usuario['Admin'] == 1
+        ]);
     } else {
         echo json_encode(["success" => false]);
     }
