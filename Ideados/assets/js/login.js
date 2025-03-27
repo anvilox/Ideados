@@ -4,9 +4,36 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
   
-      const email = document.getElementById("email").value;
+      // Limpiar mensajes de error y estilos
+      document.querySelectorAll("small.text-danger").forEach(el => el.textContent = "");
+      document.querySelectorAll(".is-invalid").forEach(el => el.classList.remove("is-invalid"));
+
+      // Obtener datos
+      const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value;
+
+      // Expresiones regulares
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/;
+
+      let valido = true;
+
+      // Validar campos
+      if (!emailRegex.test(email)) {
+        document.getElementById("error-email").textContent = "Correo electrónico no válido.";
+        document.getElementById("email").classList.add("is-invalid");
+        valido = false;
+      }
+
+      if (!passwordRegex.test(password)) {
+        document.getElementById("error-password").textContent = "Contraseña inválida. Debe tener mayúscula, minúscula, número y carácter especial.";
+        document.getElementById("password").classList.add("is-invalid");
+        valido = false;
+      }
+
+      if (!valido) return;
   
+      //Envía datos si todo está correcto
       fetch("../backend/login.php", {
         method: "POST",
         headers: {

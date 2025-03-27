@@ -14,18 +14,22 @@
       <div class="mb-3">
         <label class="form-label">Nombre</label>
         <input type="text" class="form-control" id="nombre" required>
+        <small class="text-danger" id="error-nombre"></small>
       </div>
       <div class="mb-3">
         <label class="form-label">Apellidos</label>
         <input type="text" class="form-control" id="apellidos" required>
+        <small class="text-danger" id="error-apellidos"></small>
       </div>
       <div class="mb-3">
         <label class="form-label">Correo electrónico</label>
         <input type="email" class="form-control" id="email" required>
+        <small class="text-danger" id="error-email"></small>
       </div>
       <div class="mb-3">
         <label class="form-label">Contraseña</label>
         <input type="password" class="form-control" id="password" required>
+        <small class="text-danger" id="error-password"></small>
       </div>
       <div class="mb-3">
         <label class="form-label">Dirección</label>
@@ -34,6 +38,7 @@
       <div class="mb-3">
         <label class="form-label">Código Postal</label>
         <input type="text" class="form-control" id="cp">
+        <small class="text-danger" id="error-cp"></small>
       </div>
       <div class="mb-3">
         <label class="form-label">Provincia</label>
@@ -52,10 +57,12 @@
           <option>Soria</option><option>Tarragona</option><option>Teruel</option><option>Toledo</option>
           <option>Valencia</option><option>Valladolid</option><option>Vizcaya</option><option>Zamora</option><option>Zaragoza</option>
         </select>
+        <small class="text-danger" id="error-provincia"></small>
       </div>
       <div class="mb-3">
         <label class="form-label">Teléfono</label>
         <input type="text" class="form-control" id="telefono">
+        <small class="text-danger" id="error-telefono"></small>
       </div>
       <button type="submit" class="btn btn-primary w-100">Registrarse</button>
       <div class="mt-3 text-center">
