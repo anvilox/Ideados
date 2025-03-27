@@ -48,6 +48,45 @@ try {
         echo "Producto $nombre insertado con éxito.<br>";
     }
 
+    // Insertar usuarios de ejemplo
+    $usuarios = [
+        [
+            "nombre" => "Ángel",
+            "apellidos" => "Admin",
+            "correo" => "admin@gmail.com",
+            "password" => "admin",
+            "direccion" => "Calle Central 1",
+            "telefono" => "600000001",
+            "cp" => "28001",
+            "provincia" => "Madrid",
+            "admin" => 1
+        ],
+        [
+            "nombre" => "Angel",
+            "apellidos" => "Cliente",
+            "correo" => "test@gmail.com",
+            "password" => "test",
+            "direccion" => "Avenida Norte 5",
+            "telefono" => "600000002",
+            "cp" => "08001",
+            "provincia" => "Barcelona",
+            "admin" => 0
+        ]
+    ];
+
+    foreach ($usuarios as $u) {
+        $stmt = $pdo->prepare("INSERT INTO Usuarios (Nombre, Apellidos, Correo, Contraseña, Dirección, Teléfono, Código_Postal, Provincia, Admin)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                            ON DUPLICATE KEY UPDATE Nombre = VALUES(Nombre)");
+
+        $stmt->execute([
+            $u['nombre'], $u['apellidos'], $u['correo'], $u['password'],
+            $u['direccion'], $u['telefono'], $u['cp'], $u['provincia'], $u['admin']
+        ]);
+
+        echo "Usuario {$u['correo']} insertado correctamente.<br>";
+    }
+
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
