@@ -25,7 +25,18 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['admin'] != 1) {
 
 </head>
 <body>
+
+    <!-- Botón flotante para añadir -->
+    <button class="btn btn-primary rounded-pill btn-fijo-top d-flex align-items-center gap-2"
+            data-bs-toggle="modal" data-bs-target="#modalAgregar">
+        <i class="bi bi-plus-circle fs-5"></i>
+        <span class="d-none d-sm-inline">Añadir producto</span>
+    </button>
+
     <div class="container">
+        <a href="admin.php" class="btn btn-outline-secondary mb-3">
+            <i class="bi bi-arrow-left"></i> Volver al panel
+        </a>
         <h2 class="mb-4 text-center">Gestión de Productos</h2>
 
         <div class="table-responsive">
@@ -53,11 +64,6 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['admin'] != 1) {
             <button class="btn btn-outline-secondary" id="siguiente">Siguiente</button>
         </div>
     </div>
-
-    <!-- Botón flotante para añadir -->
-    <button class="btn btn-primary rounded-pill btn-fijo" data-bs-toggle="modal" data-bs-target="#modalAgregar">
-        <i class="bi bi-plus-circle"></i> Añadir producto
-    </button>
 
     <!-- Modal para añadir producto -->
     <div class="modal fade" id="modalAgregar" tabindex="-1" aria-hidden="true">

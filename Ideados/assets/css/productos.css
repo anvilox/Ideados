@@ -24,11 +24,13 @@ body {
   
   
 
-  .btn-fijo {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 999;
+  .btn-fijo-top {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    z-index: 1050;
+    padding: 0.6rem 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   }
 
   .table-responsive {
