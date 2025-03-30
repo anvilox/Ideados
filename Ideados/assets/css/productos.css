@@ -1,0 +1,39 @@
+body {
+    background-color: #f2f4f8;
+    font-family: 'Poppins', sans-serif;
+    padding: 2rem;
+  }
+
+  .stock-bajo {
+    color: #003f7d !important;    
+    font-weight: bold;
+    border-left: 4px solid #007bff;
+  }
+  
+  .stock-medio {
+    color: #8c6d00 !important;    
+    font-weight: 500;
+    border-left: 4px solid #ffc107;
+  }
+  
+  .stock-alto {
+    color: #212529 !important;     
+    font-weight: normal;
+    border-left: 4px solid #6c757d;
+  }
+  
+  
+
+  .btn-fijo {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+  }
+
+  .table-responsive {
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+  }

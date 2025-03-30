@@ -1,22 +1,65 @@
 body {
-    background-color: #f8f9fa;
-    min-height: 100vh;
-  }
+  background-color: #f2f4f8;
+  font-family: 'Poppins', sans-serif;
+  padding: 2rem;
+}
 
-  .admin-box {
-    background: white;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    max-width: 600px;
-    margin: 3rem auto;
-  }
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
 
-  .admin-title {
-    font-size: 1.8rem;
-  }
+.admin-header .welcome {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
 
-  .admin-btn {
-    width: 100%;
-  }
+.admin-header .datetime {
+  font-size: 1rem;
+  color: #666;
+}
 
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.card-action {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-action:hover {
+  transform: translateY(-5px);
+}
+
+.card-action i {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Colores suaves */
+.productos { background-color: #4a90e2; }
+.usuarios  { background-color: #6c757d; }
+.pedidos   { background-color: #f0ad4e; }
+.cliente   { background-color: #5bc0de; }
+.stats     { background-color: #343a40; }
+
+.btn-salir {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+}

@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const productoHTML = `
                     <div class="col-md-4">
                         <div class="card mb-4">
-                            <img src="../assets/img/${producto.Imagen}" class="card-img-top" alt="${producto.Nombre}">
+                            <img src="../assets/img/productos/${producto.Imagen}" class="card-img-top" alt="${producto.Nombre}">
                             <div class="card-body">
                                 <h5 class="card-title">${producto.Nombre}</h5>
                                 <p class="card-text">${producto.Descripcion}</p>

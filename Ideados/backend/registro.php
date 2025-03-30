@@ -1,13 +1,9 @@
 <?php
 header("Content-Type: application/json");
+require_once "../backend/database/conexion.php";
 
-$dsn = "mysql:dbname=ideados;host=127.0.0.1";
-$usuario = "root";
-$clave = "";
 
 try {
-    $pdo = new PDO($dsn, $usuario, $clave);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $nombre = $_POST['nombre'] ?? '';
     $apellidos = $_POST['apellidos'] ?? '';
