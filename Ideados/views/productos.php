@@ -68,75 +68,116 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['admin'] != 1) {
     <!-- Modal para añadir producto -->
     <div class="modal fade" id="modalAgregar" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
-        <div class="modal-content">
-            <form id="formAgregar" enctype="multipart/form-data">
-            <div class="modal-header">
-                <h5 class="modal-title">Nuevo producto</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <div class="modal-content">
+                <form id="formAgregar" enctype="multipart/form-data">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Nuevo producto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" name="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <textarea class="form-control" name="descripcion" rows="2" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Categoría</label>
+                            <select class="form-select" name="categoria" id="categoria-select" required>
+                                <option value="">Selecciona una categoría</option>
+                                <!-- Se rellena dinámicamente -->
+                            </select>
+                            <button type="button" class="btn btn-sm btn-outline-secondary mt-1" data-bs-toggle="modal" data-bs-target="#modalCategoria">
+                                <i class="bi bi-plus-circle"></i> Añadir categoría
+                            </button>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Stock</label>
+                            <input type="number" class="form-control" name="stock" min="0" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Precio (€)</label>
+                            <input type="number" class="form-control" name="precio" step="0.01" min="0" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Imagen (JPG)</label>
+                            <input type="file" class="form-control" name="imagen" accept=".jpg" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
             </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label class="form-label">Nombre</label>
-                    <input type="text" class="form-control" name="nombre" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Descripción</label>
-                    <textarea class="form-control" name="descripcion" rows="2" required></textarea>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Categoría</label>
-                    <select class="form-select" name="categoria" id="categoria-select" required>
-                        <option value="">Selecciona una categoría</option>
-                        <!-- Se rellena dinámicamente -->
-                    </select>
-                    <button type="button" class="btn btn-sm btn-outline-secondary mt-1" data-bs-toggle="modal" data-bs-target="#modalCategoria">
-                        <i class="bi bi-plus-circle"></i> Añadir categoría
-                    </button>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Stock</label>
-                    <input type="number" class="form-control" name="stock" min="0" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Precio (€)</label>
-                    <input type="number" class="form-control" name="precio" step="0.01" min="0" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Imagen (JPG)</label>
-                    <input type="file" class="form-control" name="imagen" accept=".jpg" required>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Guardar</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            </div>
-            </form>
         </div>
+    </div>
+
+    <!-- Modal Editar Producto -->
+    <div class="modal fade" id="modalEditar" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="formEditar">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar Producto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="id" id="editar-id">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" id="editar-nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descripción</label>
+                        <textarea class="form-control" name="descripcion" id="editar-descripcion" rows="2" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Categoría</label>
+                        <select class="form-select" name="categoria" id="editar-categoria" required></select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Stock</label>
+                        <input type="number" class="form-control" name="stock" id="editar-stock" min="0" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Precio (€)</label>
+                        <input type="number" class="form-control" name="precio" id="editar-precio" step="0.01" min="0" required>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
     <!-- Modal Nueva Categoría -->
     <div class="modal fade" id="modalCategoria" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <form id="formCategoria">
-            <div class="modal-header">
-            <h5 class="modal-title">Nueva categoría</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="formCategoria">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Nueva categoría</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre de la categoría</label>
+                        <input type="text" class="form-control" name="nombre_categoria" required>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
             </div>
-            <div class="modal-body">
-            <div class="mb-3">
-                <label class="form-label">Nombre de la categoría</label>
-                <input type="text" class="form-control" name="nombre_categoria" required>
-            </div>
-            </div>
-            <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            </div>
-        </form>
         </div>
-    </div>
     </div>
 </body>
 </html>

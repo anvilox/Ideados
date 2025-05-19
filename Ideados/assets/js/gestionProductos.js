@@ -63,6 +63,30 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    //Editar producto
+    document.getElementById("formEditar").addEventListener("submit", function (e) {
+        e.preventDefault();
+      
+        const datos = new FormData(this);
+      
+        fetch("../backend/editProducto.php", {
+          method: "POST",
+          body: datos
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+              alert("Producto editado correctamente.");
+              bootstrap.Modal.getInstance(document.getElementById("modalEditar")).hide();
+              cargarProductos();
+            } else {
+              alert("Error: " + (data.error || "No se pudo editar el producto."));
+            }
+          })
+          .catch(err => console.error("Error al editar producto:", err));
+    });
+      
+
     // Paginación
     document.getElementById("anterior").addEventListener("click", () => {
         if (paginaActual > 1) {
@@ -124,7 +148,7 @@ function cargarProductos() {
             <td class="${claseStock}">${icono} ${stock}</td>
             <td>${parseFloat(prod.Precio).toFixed(2)}</td>
             <td>
-                <button class="btn btn-sm btn-outline-primary me-2" title="Editar"><i class="bi bi-pencil"></i></button>
+                <button class="btn btn-sm btn-outline-primary me-2" title="Editar" onclick='abrirModalEditar(${JSON.stringify(prod)})'><i class="bi bi-pencil"></i></button>
                 <button class="btn btn-sm btn-outline-danger" onclick="eliminarProducto(${prod.Id})" title="Eliminar"><i class="bi bi-trash"></i></button>
             </td>
             `;
@@ -162,3 +186,30 @@ function eliminarProducto(id) {
         console.error("Error:", err);
     });
 }
+
+function abrirModalEditar(producto) {
+    document.getElementById("editar-id").value = producto.Id;
+    document.getElementById("editar-nombre").value = producto.Nombre;
+    document.getElementById("editar-descripcion").value = producto.Descripcion;
+    document.getElementById("editar-stock").value = producto.Stock;
+    document.getElementById("editar-precio").value = parseFloat(producto.Precio).toFixed(2);
+  
+    // Rellenar select de categoría
+    const select = document.getElementById("editar-categoria");
+    select.innerHTML = '<option value="">Selecciona una categoría</option>';
+    
+    fetch("../backend/getCategorias.php")
+      .then(res => res.json())
+      .then(data => {
+        data.forEach(cat => {
+          const option = document.createElement("option");
+          option.value = cat.Id;
+          option.textContent = cat.Nombre;
+          if (cat.Nombre === producto.Categoria) option.selected = true;
+          select.appendChild(option);
+        });
+      });
+  
+    const modalEditar = new bootstrap.Modal(document.getElementById("modalEditar"));
+    modalEditar.show();
+  }

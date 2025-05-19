@@ -8,8 +8,33 @@ $categoria_id = $_POST['categoria'] ?? null;
 $stock = $_POST['stock'] ?? 0;
 $precio = $_POST['precio'] ?? 0;
 
+// Validaciones básicas
 if (!$nombre || !$descripcion || !$categoria_id || !is_numeric($stock) || !is_numeric($precio)) {
     echo json_encode(["success" => false, "error" => "Datos incompletos"]);
+    exit;
+}
+
+// Validaciones con expresiones regulares
+$nombreRegex = '/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{2,}$/';
+$descripcionRegex = '/^.{5,}$/';
+
+if (!preg_match($nombreRegex, $nombre)) {
+    echo json_encode(["success" => false, "error" => "Nombre inválido. Solo letras y espacios, mínimo 2 caracteres."]);
+    exit;
+}
+
+if (!preg_match($descripcionRegex, $descripcion)) {
+    echo json_encode(["success" => false, "error" => "Descripción inválida. Debe tener al menos 5 caracteres."]);
+    exit;
+}
+
+if ($stock < 0) {
+    echo json_encode(["success" => false, "error" => "El stock no puede ser negativo."]);
+    exit;
+}
+
+if ($precio <= 0) {
+    echo json_encode(["success" => false, "error" => "El precio debe ser mayor que 0."]);
     exit;
 }
 
