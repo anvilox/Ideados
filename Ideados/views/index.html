@@ -6,6 +6,8 @@
     <title>Ideados</title>
     <link rel="stylesheet" href="../assets/css/animaciones.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="fade-in">
 
@@ -18,14 +20,46 @@
           <button id="cerrarSesionBtn" class="btn btn-outline-light" onclick="cerrarSesion()">Cerrar sesión</button>
           <button id="crearCuentaBtn" class="btn btn-outline-light d-none" onclick="crearCuenta()">Crear cuenta</button>
         </div>
-    </header>    
+    </header>
 
-    <!-- Sección de productos -->
-    <div class="container mt-4">
-        <h2 class="text-center mb-4">Nuestros Productos</h2>
-        <div class="row" id="productos-container">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Descubre la Elegancia en Cada Espacio</h1>
+            <p>Muebles de alta calidad para transformar tu hogar.</p>
+            <a href="catalogo.html" class="btn-hero">Explorar Productos</a>
         </div>
-    </div>
+    </section>    
+
+    <!-- Productos Destacados -->
+    <section class="destacados">
+        <h2>Productos Destacados</h2>
+        <div class="productos-grid">
+            <!-- Productos generados dinámicamente -->
+        </div>
+        <a href="catalogo.html" class="btn-ver-todo">Ver Todos los Productos</a>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer class="footer">
+        <div class="footer-section">
+            <h4>Ideados</h4>
+            <p>Creada por Angel Vila González <br>Proyecto de fin de ciclo de Desarrollo de Aplicaciones Web</p>
+        </div>
+        <div class="footer-section">
+            <h4>Ubicación</h4>
+            <p>Mieres, Asturias</p>
+        </div>
+        <div class="footer-section">
+            <h4>Contacto</h4>
+            <p>info@ideados.com</p>
+            <p>+34 987 654 321</p>
+        </div>
+        <div class="footer-section">
+            <p>&copy; Ideados. Todos los derechos reservados</p>
+        </div>
+    </footer>
+
 
     <!-- Script de Usuario -->
     <script src="../assets/js/index.js"></script>
@@ -34,5 +68,7 @@
     <!-- Script para cargar los productos dinámicamente -->
     <script src="../assets/js/cargarProductos.js"></script>
 
+    
+    <link rel="stylesheet" href="../assets/css/index.css" />
 </body>
 </html>

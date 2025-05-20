@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 header("Content-Type: application/json");
-require_once "database/conexion.php";
+require_once "../backend/database/conexion.php";
 
 
 $id = $_POST['id'] ?? null;

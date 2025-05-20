@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-require_once "database/conexion.php";
+require_once "../backend/database/conexion.php";
 
 try {
     $stmt = $pdo->query("SELECT Id, Nombre FROM Categorias ORDER BY Nombre ASC");
