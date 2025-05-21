@@ -59,7 +59,7 @@ try {
             "telefono" => "600000001",
             "cp" => "28001",
             "provincia" => "Madrid",
-            "admin" => 1
+            "rol" => 1
         ],
         [
             "nombre" => "Angel",
@@ -70,18 +70,18 @@ try {
             "telefono" => "600000002",
             "cp" => "08001",
             "provincia" => "Barcelona",
-            "admin" => 0
+            "rol" => 0
         ]
     ];
 
     foreach ($usuarios as $u) {
-        $stmt = $pdo->prepare("INSERT INTO Usuarios (Nombre, Apellidos, Correo, Contraseña, Dirección, Teléfono, Código_Postal, Provincia, Admin)
+        $stmt = $pdo->prepare("INSERT INTO Usuarios (Nombre, Apellidos, Correo, Contraseña, Dirección, Teléfono, Código_Postal, Provincia, Rol)
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                             ON DUPLICATE KEY UPDATE Nombre = VALUES(Nombre)");
 
         $stmt->execute([
             $u['nombre'], $u['apellidos'], $u['correo'], $u['password'],
-            $u['direccion'], $u['telefono'], $u['cp'], $u['provincia'], $u['admin']
+            $u['direccion'], $u['telefono'], $u['cp'], $u['provincia'], $u['rol']
         ]);
 
         echo "Usuario {$u['correo']} insertado correctamente.<br>";

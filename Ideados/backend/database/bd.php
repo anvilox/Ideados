@@ -28,7 +28,7 @@ try {
         Código_Postal VARCHAR(10),
         Provincia VARCHAR(50),
         Metodo_Pago VARCHAR(100),
-        Admin BOOLEAN NOT NULL DEFAULT FALSE
+        Rol BOOLEAN NOT NULL DEFAULT FALSE
     )";
 
     // Crear tabla de categorías

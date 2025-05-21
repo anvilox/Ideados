@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          if (data.admin) {
+          if (data.rol) {
             window.location.href = "admin.php";
           } else {
             window.location.href = "index.html";

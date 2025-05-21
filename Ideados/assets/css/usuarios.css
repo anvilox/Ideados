@@ -1,0 +1,72 @@
+.usuarios-main {
+    padding: 40px 20px;
+    background-color: #121212;
+    color: #ffffff;
+    min-height: calc(100vh - 100px);
+}
+
+.usuarios-main h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #e0a800;
+}
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.filtros input {
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    background-color: #2a2a2a;
+    color: #fff;
+    font-size: 0.95rem;
+    min-width: 200px;
+}
+
+.tabla-usuarios {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.tabla-usuarios th,
+.tabla-usuarios td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+.tabla-usuarios th {
+    background-color: #2a2a2a;
+    color: #e0a800;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.tabla-usuarios tr:hover {
+    background-color: #2d2d2d;
+}
+
+.btn-eliminar {
+    background-color: #d9534f;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-eliminar:hover {
+    background-color: #c9302c;
+}

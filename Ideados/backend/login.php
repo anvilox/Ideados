@@ -18,11 +18,11 @@ try {
             'id' => $usuario['Id'],
             'nombre' => $usuario['Nombre'],
             'correo' => $usuario['Correo'],
-            'admin' => $usuario['Admin']
+            'rol' => $usuario['Rol']
         ];
         echo json_encode([
             "success" => true,
-            "admin" => $usuario['Admin'] == 1
+            "rol" => $usuario['Rol'] == 1
         ]);
     } else {
         echo json_encode(["success" => false]);

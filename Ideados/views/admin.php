@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['admin'] != 1) {
-  header("Location: login.html");
-  exit;
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['rol'] != 1) {
+    header("Location: login.html");
+    exit;
 }
 ?>
 
@@ -38,7 +38,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['admin'] != 1) {
         <i class="bi bi-box-seam"></i>
         <div>Gestionar Productos</div>
       </div>
-      <div class="card-action usuarios" onclick="alert('Próximamente')">
+      <div class="card-action usuarios" onclick="location.href='usuarios.php'">
         <i class="bi bi-people-fill"></i>
         <div>Gestionar Usuarios</div>
       </div>
