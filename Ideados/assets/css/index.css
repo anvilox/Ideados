@@ -11,6 +11,12 @@ a {
     color: inherit;
 }
 
+header h1 a:hover {
+    color: #e0a800; /* o el color principal de tu tema */
+    text-shadow: 0 0 5px rgba(224, 168, 0, 0.6);
+    cursor: pointer;
+}
+
 /* Hero Section */
 .hero {
     background: url('../img/banner.jpg') no-repeat center center/cover;
