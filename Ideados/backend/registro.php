@@ -14,7 +14,7 @@ try {
     $cp = $_POST['cp'] ?? '';
     $provincia = $_POST['provincia'] ?? '';
 
-    $sql = "INSERT INTO Usuarios (Nombre, Apellidos, Correo, Contraseña, Dirección, Teléfono, Código_Postal, Provincia, Admin)
+    $sql = "INSERT INTO Usuarios (Nombre, Apellidos, Correo, Contraseña, Dirección, Teléfono, Código_Postal, Provincia, Rol)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$nombre, $apellidos, $email, $password, $direccion, $telefono, $cp, $provincia]);

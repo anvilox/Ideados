@@ -11,20 +11,15 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['rol'] != 1) {
 <head>
     <meta charset="UTF-8">
     <title>Gestión de Usuarios</title>
-    <link rel="stylesheet" href="../assets/css/usuarios.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-    <header class="cabecera">
-        <h1 class="logo"><a href="../index.html">Ideados</a></h1>
-        <div class="usuario-info">
-            <a href="admin.php" class="btn-header">← Volver al panel</a>
-            <button onclick="cerrarSesion()" class="btn-header">Cerrar sesión</button>
-        </div>
-    </header>
-
     <main class="admin-main container">
-        <h2 class="text-center text-warning mb-4">Gestión de Usuarios</h2>
+        <a href="admin.php" class="btn btn-outline-secondary mb-3">
+            <i class="bi bi-arrow-left"></i> Volver al panel
+        </a>
+        <h2 class="text-center mb-4">Gestión de Usuarios</h2>
 
         <div class="row justify-content-center mb-4">
             <div class="col-md-4">
@@ -53,11 +48,17 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['rol'] != 1) {
         </div>
 
         <div class="d-flex justify-content-center">
-            <button class="btn btn-outline-light me-2" id="anterior">Anterior</button>
-            <button class="btn btn-outline-light" id="siguiente">Siguiente</button>
+            <button class="btn btn-outline-secondary me-2" id="anterior">Anterior</button>
+            <button class="btn btn-outline-secondary" id="siguiente">Siguiente</button>
+        </div>
+
+        <div class="indicador-wrapper">
+            <div class="text-center text-light mt-2" id="indicadorPagina"></div>
         </div>
     </main>
 
     <script src="../assets/js/gestionUsuarios.js"></script>
+    
+    <link rel="stylesheet" href="../assets/css/usuarios.css">
 </body>
 </html>

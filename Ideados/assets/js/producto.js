@@ -1,5 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
     cargarProducto();
+    const params = new URLSearchParams(window.location.search);
+    const origen = params.get("origen");
+
+    const btnVolver = document.getElementById("btnVolver");
+    if (origen === "catalogo") {
+        btnVolver.href = "catalogo.html";
+    } else {
+        btnVolver.href = "index.html"; 
+    }
 });
 
 

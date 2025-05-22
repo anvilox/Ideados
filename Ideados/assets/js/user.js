@@ -14,7 +14,7 @@ fetch("../backend/session.php")
           crearCuentaBtn.classList.remove("d-none");
         }
 
-        if (data.usuario.admin === 1 || data.usuario.admin === "1") {
+        if (data.usuario.rol === 1 || data.usuario.rol === "1") {
           adminBtn.classList.remove("d-none");
         } else {
           adminBtn.classList.add("d-none");

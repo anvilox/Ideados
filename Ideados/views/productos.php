@@ -63,6 +63,10 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['rol'] != 1) {
             <button class="btn btn-outline-secondary me-2" id="anterior" disabled>Anterior</button>
             <button class="btn btn-outline-secondary" id="siguiente">Siguiente</button>
         </div>
+
+        <div class="indicador-wrapper">
+            <div class="text-center text-light mt-2" id="indicadorPagina"></div>
+        </div>
     </div>
 
     <!-- Modal para añadir producto -->

@@ -1,3 +1,9 @@
+body {
+    background-color: #f2f4f8;
+    font-family: 'Poppins', sans-serif;
+    padding: 2rem;
+}
+
 .usuarios-main {
     padding: 40px 20px;
     background-color: #121212;
@@ -69,4 +75,22 @@
 
 .btn-eliminar:hover {
     background-color: #c9302c;
+}
+
+#indicadorPagina {
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #e0a800; /* dorado elegante */
+    text-align: center;
+    background-color: #1e1e1e;
+    padding: 8px 16px;
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+.indicador-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

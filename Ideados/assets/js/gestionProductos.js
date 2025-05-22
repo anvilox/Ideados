@@ -155,10 +155,14 @@ function cargarProductos() {
             tabla.appendChild(fila);
         });
 
+
         // Controlar botones de paginación
         document.getElementById("anterior").disabled = paginaActual === 1;
         const totalPaginas = Math.ceil(total / porPagina);
         document.getElementById("siguiente").disabled = paginaActual >= totalPaginas;
+        document.getElementById("indicadorPagina").textContent =
+            `Página ${paginaActual} de ${totalPaginas}`;
+
         })
         .catch(err => {
         console.error("Error al cargar productos:", err);

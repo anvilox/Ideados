@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 data.productos.forEach(prod => {
                     const enlace = document.createElement("a");
-                    enlace.href = `producto.html?id=${prod.Id}`;
+                    enlace.href = `producto.html?id=${prod.Id}&origen=index`;
                     enlace.classList.add("card");
 
                     enlace.innerHTML = `
