@@ -7,7 +7,7 @@ $_SESSION['usuario'] = [
     'id' => null,
     'nombre' => 'Invitado',
     'correo' => null,
-    'admin' => false
+    'rol' => false
 ];
 
 echo json_encode(["success" => true]);

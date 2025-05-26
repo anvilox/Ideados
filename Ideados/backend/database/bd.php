@@ -49,34 +49,24 @@ try {
         FOREIGN KEY (Categoria_Id) REFERENCES Categorias(Id)
     )";
 
-    // Crear tabla de carrito
-    $sql_carrito = "CREATE TABLE IF NOT EXISTS Carrito (
+    // Crear tabla de detalle del pedido
+    $sql_detalle_pedido = "CREATE TABLE IF NOT EXISTS DetallePedido (
         Id INT AUTO_INCREMENT PRIMARY KEY,
-        Usuario_Id INT,
-        Estado ENUM('Pendiente', 'Pagado', 'Completado') DEFAULT 'Pendiente',
-        FOREIGN KEY (Usuario_Id) REFERENCES Usuarios(Id)
-    )";
-
-    // Crear tabla de detalle del carrito
-    $sql_detalle_carrito = "CREATE TABLE IF NOT EXISTS DetalleCarrito (
-        Id INT AUTO_INCREMENT PRIMARY KEY,
-        Carrito_Id INT,
+        Pedido_Id INT,
         Producto_Id INT,
         Cantidad INT,
         Precio_Unitario DECIMAL(10,2),
-        FOREIGN KEY (Carrito_Id) REFERENCES Carrito(Id) ON DELETE CASCADE,
+        FOREIGN KEY (Pedido_Id) REFERENCES Pedidos(Id) ON DELETE CASCADE,
         FOREIGN KEY (Producto_Id) REFERENCES Productos(Id) ON DELETE CASCADE
     )";
 
     // Crear tabla de pedidos
     $sql_pedidos = "CREATE TABLE IF NOT EXISTS Pedidos (
         Id INT AUTO_INCREMENT PRIMARY KEY,
-        Carrito_Id INT,
         Usuario_Id INT,
         Precio_Total DECIMAL(10,2),
         Fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         Estado ENUM('Pendiente', 'Pagado', 'Completado', 'Cancelado'),
-        FOREIGN KEY (Carrito_Id) REFERENCES Carrito(Id),
         FOREIGN KEY (Usuario_Id) REFERENCES Usuarios(Id)
     )";
 
@@ -84,9 +74,8 @@ try {
     $bd->exec($sql_usuarios);
     $bd->exec($sql_categorias);
     $bd->exec($sql_productos);
-    $bd->exec($sql_carrito);
-    $bd->exec($sql_detalle_carrito);
     $bd->exec($sql_pedidos);
+    $bd->exec($sql_detalle_pedido);
 
     echo "Tablas creadas correctamente.";
 } catch (PDOException $e) {
