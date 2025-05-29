@@ -11,6 +11,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+document.getElementById("btnAddCarrito").addEventListener("click", () => {
+    const cantidad = parseInt(document.getElementById("cantidad").value);
+    const producto = {
+        id: parseInt(document.getElementById("id-producto").value),
+        nombre: document.getElementById("nombre-producto").textContent,
+        precio: parseFloat(document.getElementById("precio-producto").dataset.valor),
+        cantidad
+    };
+
+    agregarAlCarrito(producto);
+    alert("Producto añadido al carrito");
+});
+
+
 
 function cargarProducto() {
     const params = new URLSearchParams(window.location.search);
@@ -23,11 +37,16 @@ function cargarProducto() {
         .then(data => {
             if (data.success) {
                 const prod = data.producto;
+                document.getElementById("id-producto").value = id;
                 document.getElementById("imagen-producto").src = `../assets/img/productos/${prod.Imagen}`;
                 document.getElementById("imagen-producto").alt = prod.Nombre;
                 document.getElementById("nombre-producto").textContent = prod.Nombre;
                 document.getElementById("descripcion-producto").textContent = prod.Descripcion;
-                document.getElementById("precio-producto").textContent = `${parseFloat(prod.Precio).toFixed(2)} €`;
+                const precioSpan = document.getElementById("precio-producto");
+                const precioNumerico = parseFloat(prod.Precio).toFixed(2);
+
+                precioSpan.textContent = `${precioNumerico} €`;
+                precioSpan.dataset.valor = precioNumerico;
                 document.getElementById("stock-producto").textContent = `Stock: ${prod.Stock}`;
                 
                 const inputCantidad = document.getElementById("cantidad");

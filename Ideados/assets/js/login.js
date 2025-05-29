@@ -1,64 +1,65 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("loginForm");
   
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
+  localStorage.removeItem("carrito"); // Limpiar carrito al cargar la página
+  const form = document.getElementById("loginForm");
   
-      // Limpiar mensajes de error y estilos
-      document.querySelectorAll("small.text-danger").forEach(el => el.textContent = "");
-      document.querySelectorAll(".is-invalid").forEach(el => el.classList.remove("is-invalid"));
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      // Obtener datos
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
+    // Limpiar mensajes de error y estilos
+    document.querySelectorAll("small.text-danger").forEach(el => el.textContent = "");
+    document.querySelectorAll(".is-invalid").forEach(el => el.classList.remove("is-invalid"));
 
-      // Expresiones regulares
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/;
+    // Obtener datos
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
 
-      let valido = true;
+    // Expresiones regulares
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/;
 
-      // Validar campos
-      if (!emailRegex.test(email)) {
-        document.getElementById("error-email").textContent = "Correo electrónico no válido.";
-        document.getElementById("email").classList.add("is-invalid");
-        valido = false;
-      }
+    let valido = true;
 
-      if (!passwordRegex.test(password)) {
-        document.getElementById("error-password").textContent = "Contraseña inválida. Debe tener mayúscula, minúscula, número y carácter especial.";
-        document.getElementById("password").classList.add("is-invalid");
-        valido = false;
-      }
+    // Validar campos
+    if (!emailRegex.test(email)) {
+      document.getElementById("error-email").textContent = "Correo electrónico no válido.";
+      document.getElementById("email").classList.add("is-invalid");
+      valido = false;
+    }
 
-      if (!valido) return;
+    if (!passwordRegex.test(password)) {
+      document.getElementById("error-password").textContent = "Contraseña inválida. Debe tener mayúscula, minúscula, número y carácter especial.";
+      document.getElementById("password").classList.add("is-invalid");
+      valido = false;
+    }
+
+    if (!valido) return;
   
-      //Envía datos si todo está correcto
-      fetch("../backend/login.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          if (data.rol) {
-            window.location.href = "admin.php";
-          } else {
-            window.location.href = "index.html";
-          }
+    //Envía datos si todo está correcto
+    fetch("../backend/login.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        if (data.rol) {
+          window.location.href = "admin.php";
         } else {
-          alert("Correo o contraseña incorrectos");
+          window.location.href = "index.html";
         }
-      })
-      .catch(err => {
-        console.error("Error al iniciar sesión:", err);
-        alert("Hubo un error en el servidor.");
-      });
+      } else {
+        alert("Correo o contraseña incorrectos");
+      }
+    })
+    .catch(err => {
+      console.error("Error al iniciar sesión:", err);
+      alert("Hubo un error en el servidor.");
     });
-  });
+  });  });
 
 function iniciarComoInvitado() {
   fetch("../backend/invitado.php")

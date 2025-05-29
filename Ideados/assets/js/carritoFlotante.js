@@ -37,55 +37,89 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function renderizarCarritoPanel() {
         const contenido = document.getElementById("carrito-contenido");
+        contenido.innerHTML = "";
 
         fetch("../backend/verificarSesion.php")
             .then(res => res.json())
-            .then(usuario => {
-            const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-            if (!usuario.logueado) {
+        .then(data => {
+            if (!data.logueado) {
                 contenido.innerHTML = `
-                <p class="mensaje-carrito">Debes iniciar sesión para comprar.</p>
-                <div class="d-flex justify-content-center">
-                    <a href="login.html" class="btn btn-outline-light">Iniciar sesión</a>
-                </div>
+                    <p class="text-center">Debes iniciar sesión para comprar.</p>
+                    <div class="text-center">
+                        <a href="login.html" class="btn btn-outline-light btn-sm">Iniciar sesión</a>
+                    </div>
                 `;
                 return;
             }
+
+            const carrito = obtenerCarrito();
 
             if (carrito.length === 0) {
-                contenido.innerHTML = `
-                <p class="mensaje-carrito">Tu carrito está vacío. Añade los productos que deseas.</p>
-                `;
+                contenido.innerHTML = `<p class="text-center">Añade los productos que deseas.</p>`;
                 return;
             }
 
-            let html = `<ul class="lista-carrito">`;
-
             let total = 0;
-            carrito.forEach(item => {
-                const subtotal = item.precio * item.cantidad;
+            carrito.forEach(p => {
+                const subtotal = p.precio * p.cantidad;
                 total += subtotal;
-
-                html += `
-                <li class="item-carrito">
-                    <span>${item.nombre}</span>
-                    <span>${item.cantidad} x ${item.precio.toFixed(2)}€</span>
-                </li>
+                contenido.innerHTML += `
+                    <div class="border-bottom mb-2 pb-2">
+                        <strong>${p.nombre}</strong><br>
+                        Cantidad: ${p.cantidad}<br>
+                        Total: ${subtotal.toFixed(2)} €
+                    </div>
                 `;
             });
 
-            html += `</ul>
-                <hr>
-                <div class="total-carrito text-end mb-3">
-                <strong>Total:</strong> ${total.toFixed(2)}€
-                </div>
-                <div class="d-grid">
-                <button class="btn btn-success">Realizar pedido</button>
+            contenido.innerHTML += `
+                <div class="text-center mt-3">
+                    <strong>Total: ${total.toFixed(2)} €</strong><br>
+                    <div class="d-flex justify-content-center align-items-center gap-2 mt-3 flex-wrap">
+                        <button id="vaciar-carrito" class="btn btn-outline-danger btn-sm">
+                            <i class="bi bi-trash3 me-1"></i> Vaciar carrito
+                        </button>
+                        <button class="btn btn-light btn-sm" id="realizar-pedido">
+                            Realizar pedido
+                        </button>
+                    </div>
                 </div>
             `;
-
-            contenido.innerHTML = html;
+            document.getElementById("vaciar-carrito").addEventListener("click", () => {
+                vaciarCarrito();
+                renderizarCarritoPanel();
             });
+        });
     }
 });
+// Funciones del carrito
+
+// Obtener carrito desde localStorage
+function obtenerCarrito() {
+    const datos = localStorage.getItem("carrito");
+    return datos ? JSON.parse(datos) : [];
+}
+
+// Guardar carrito en localStorage
+function guardarCarrito(carrito) {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+// Vaciar el carrito
+function vaciarCarrito() {
+    localStorage.removeItem("carrito");
+}
+
+// Añadir o actualizar un producto
+function agregarAlCarrito(producto) {
+    const carrito = obtenerCarrito();
+    const existente = carrito.find(p => p.id === producto.id);
+
+    if (existente) {
+        existente.cantidad = producto.cantidad;
+    } else {
+        carrito.push(producto);
+    }
+
+    guardarCarrito(carrito);
+}
