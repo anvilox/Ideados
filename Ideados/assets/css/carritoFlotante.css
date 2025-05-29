@@ -34,6 +34,8 @@
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.4);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  max-height: 70vh;
+  overflow-y: auto;
 }
 
 .carrito-panel.activo {
@@ -73,6 +75,7 @@
     bottom: 0;
     border-radius: 0;
     transition: right 0.3s ease;
+    max-height: 90vh;
   }
 
   .carrito-panel.activo {
