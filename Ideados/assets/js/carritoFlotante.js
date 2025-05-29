@@ -89,9 +89,37 @@ document.addEventListener("DOMContentLoaded", () => {
                 vaciarCarrito();
                 renderizarCarritoPanel();
             });
+            document.getElementById("realizar-pedido").addEventListener("click", () => {
+                const carrito = obtenerCarrito();
+
+                fetch("../backend/realizarPedido.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ productos: carrito })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Pedido realizado con éxito.");
+                        vaciarCarrito();
+                        renderizarCarritoPanel();
+                        location.reload();
+                    } else {
+                        alert("Error al procesar el pedido: " + data.error);
+                    }
+                })
+                .catch(err => {
+                    console.error("Error:", err);
+                    alert("Hubo un error inesperado.");
+                });
+            });
+
         });
     }
 });
+
 // Funciones del carrito
 
 // Obtener carrito desde localStorage

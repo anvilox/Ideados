@@ -46,7 +46,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['rol'] != 1) {
         <i class="bi bi-truck"></i>
         <div>Gestionar Pedidos</div>
       </div>
-      <div class="card-action stats" onclick="alert('Próximamente')">
+      <div class="card-action stats" onclick="location.href='estadisticas.php'">
         <i class="bi bi-bar-chart-fill"></i>
         <div>Ver estadísticas</div>
       </div>
