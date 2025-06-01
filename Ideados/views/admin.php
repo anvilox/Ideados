@@ -42,7 +42,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['rol'] != 1) {
         <i class="bi bi-people-fill"></i>
         <div>Gestionar Usuarios</div>
       </div>
-      <div class="card-action pedidos" onclick="alert('Próximamente')">
+      <div class="card-action pedidos" onclick="location.href='pedidos.php'">
         <i class="bi bi-truck"></i>
         <div>Gestionar Pedidos</div>
       </div>

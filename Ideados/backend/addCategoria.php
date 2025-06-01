@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-require_once "database/conexion.php";
+require_once "../backend/database/conexion.php";
 
 $nombre = $_POST['nombre_categoria'] ?? '';
 

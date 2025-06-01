@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-require_once "database/conexion.php";
+require_once "../backend/database/conexion.php";
 
 $porPagina = 20;
 $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;

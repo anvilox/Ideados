@@ -12,16 +12,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.getElementById("btnAddCarrito").addEventListener("click", () => {
-    const cantidad = parseInt(document.getElementById("cantidad").value);
-    const producto = {
-        id: parseInt(document.getElementById("id-producto").value),
-        nombre: document.getElementById("nombre-producto").textContent,
-        precio: parseFloat(document.getElementById("precio-producto").dataset.valor),
-        cantidad
-    };
 
-    agregarAlCarrito(producto);
-    alert("Producto añadido al carrito");
+    fetch("../backend/verificarSesion.php")
+        .then(res => res.json())
+        .then(data => {
+            if (!data.logueado || data.nombre === "Invitado" || data.id === null) {
+                alert("Debes iniciar sesión para añadir productos al carrito.");
+                return;
+            }
+        const cantidad = parseInt(document.getElementById("cantidad").value);
+        const producto = {
+            id: parseInt(document.getElementById("id-producto").value),
+            nombre: document.getElementById("nombre-producto").textContent,
+            precio: parseFloat(document.getElementById("precio-producto").dataset.valor),
+            cantidad
+        };
+
+        agregarAlCarrito(producto);
+        alert("Producto añadido al carrito");
+    });
 });
 
 

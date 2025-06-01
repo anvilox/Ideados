@@ -1,0 +1,32 @@
+#indicadorPagina {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.estado-icono {
+    font-size: 1.3rem;
+}
+
+#indicadorPagina {
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #e0a800; /* dorado elegante */
+    text-align: center;
+    background-color: #1e1e1e;
+    padding: 8px 16px;
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+.indicador-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.estado-pendiente { color: #ffc107; } 
+
+.estado-completado { color: #28a745; } 
+
+.estado-cancelado { color: #dc3545; } 

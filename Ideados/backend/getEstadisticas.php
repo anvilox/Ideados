@@ -19,7 +19,7 @@ try {
     $pedidos = $pdo->query("SELECT COUNT(*) FROM Pedidos")->fetchColumn();
 
     // Total ventas del último mes
-    $stmt = $pdo->prepare("SELECT SUM(Precio_Total) FROM Pedidos WHERE Fecha >= ?");
+    $stmt = $pdo->prepare("SELECT SUM(Precio_Total) FROM Pedidos WHERE Fecha >= ? AND Estado = 'Completado'");
     $stmt->execute([$unMesAtras]);
     $ventasUltimoMes = $stmt->fetchColumn() ?? 0;
 
