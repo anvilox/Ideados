@@ -2,7 +2,7 @@
 $dsn = "mysql:host=localhost";
 $usuario = "root";
 $clave = "";
-$nombreBD = "ideados";
+$nombreBD = "prueba";
 
 try {
     // Crear la conexión PDO
@@ -27,7 +27,6 @@ try {
         Dirección VARCHAR(255),
         Código_Postal VARCHAR(10),
         Provincia VARCHAR(50),
-        Metodo_Pago VARCHAR(100),
         Rol BOOLEAN NOT NULL DEFAULT FALSE
     )";
 
